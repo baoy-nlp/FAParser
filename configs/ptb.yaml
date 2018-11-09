@@ -1,0 +1,103 @@
+base_configs:
+# file configs:
+  start_iter: 0
+  config_path: "/home/user_data/baoy/projects/seq2seq_parser/configs/ptb.yaml"
+  train_file: "/home/user_data/baoy/projects/seq2seq_parser/data/s2b/train.bin"
+  dev_file: "/home/user_data/baoy/projects/seq2seq_parser/data/s2b/dev.bin"
+  test_file: "/home/user_data/baoy/projects/seq2seq_parser/data/s2b/test.bin"
+  vocab: "/home/user_data/baoy/projects/seq2seq_parser/data/ptb/vocab.bin"
+  unlabeled_file: ~
+  logdir: &log /home/user_data/baoy/experiments/Semi/new_log
+  save_decode_to: ~
+  model_dir: "/home/user_data/baoy/experiments/Semi/model/ptb/s2b"
+# model configs:
+  model_select: "SeqParserVAE"
+  mode: ~
+  load_decoder: ~
+  load_baseline: ~
+  load_prior: ~
+  load_encoder: ~
+  load_src_lm: ~
+# model parameter set
+  embed_size: &embed_size 300
+  cuda: &use_cuda true
+  hidden_size: &hidden_size 200
+  word_dropout: &wd 0.2
+  dropout: &drop 0.1
+  seed: 5783287
+# train configs:
+  sample_size: &samplesize 5
+  beam_size: *samplesize
+  batch_size: 50
+  lr: 0.001
+  lr_decay: 0.7
+  lr_decay_after_epoch: 5
+  fixed_grad: &fg false
+  clip_learning_signal: ~
+  begin_semisup_after_dev_acc: 0.0
+  src_max_time_step: &smts 100
+  tgt_max_time_step: &tmts 250
+  unsup_loss_weight: 1.0
+  valid_metric: p_acc
+  log_every: 10
+  patience: 8
+  max_num_trial: 20
+  uniform_init: ~
+  clip_grad: 5.0
+  max_epoch: 20000
+  reset_optimizer: false
+  train_opt: "reinforce"
+  unsup_batch_size: 10
+  kl_anneal: false
+  alpha: 0.1
+  verbose: false
+  eval_mode: F1
+  num_layers: &nl 3
+  exp_name: &exp_n ~
+  dev_every: 300
+  model_backup: reproduct
+
+linear_configs:
+  embed_size: &ves 300
+  hidden_size: &vhs 100
+  num_layers: &vnl 3
+  rnn_drop: &vrd 0.1
+  latent_size: 100
+# seq2seq model parameter
+  rnn_type: gru
+  src_max_time_step: *smts
+  enc_embed_dim: *ves
+  enc_hidden_dim: *vhs
+  enc_num_layers: *vnl
+  bidirectional: true
+  use_attention: false
+  mapper_type: link
+  tgt_max_time_step: *tmts
+  dec_embed_dim: *ves
+  dec_hidden_dim: *vhs
+  dec_num_layers: *vnl
+# vae parameter
+  cuda: *use_cuda
+  eval_mode: bleu
+  logdir: *log
+  log_every: 10
+  model_select: &vms Seq2seqParser
+  model_file: *vms
+  max_sequecne_length: 300
+  print_every: 10
+  sample_size: 5
+  share_embed: true
+  tensorboard_logging: true
+  use_attention: false
+  enc_ed: 0.0
+  enc_rd: 0.0
+  dec_ed: *vrd
+  dec_rd: *vrd
+  unk_rate: 0.50
+  epochs: 10
+  unk_schedule: fixed
+  src_wd: false
+  tgt_wd: true
+  reload_model: false
+  stop_clip_kl: 0.3
+  warm_up: true
