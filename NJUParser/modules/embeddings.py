@@ -7,8 +7,8 @@ import math
 import torch
 import torch.nn as nn
 
-from NJUParser.utils import init as my_init
 from NJUParser.dataset.vocab import Vocab
+from NJUParser.modules import init as my_init
 
 
 class Embeddings(nn.Module):
@@ -17,9 +17,15 @@ class Embeddings(nn.Module):
                  embedding_dim,
                  dropout=0.0,
                  add_position_embedding=True,
-                 padding_idx=Vocab.PAD):
+                 padding_idx=0):
 
         super().__init__()
+        try:
+            padding_idx = Vocab.PAD
+            self.skip = False
+        except:
+            self.skip = True
+            num_embeddings += 1
 
         if dropout > 0.0:
             self.dropout = nn.Dropout(dropout)
@@ -71,8 +77,11 @@ class Embeddings(nn.Module):
         return signal.unsqueeze(0).expand(batch, length, channels)
 
     def forward(self, x):
-
-        emb = self.embeddings(x)
+        if self.skip:
+            true_idx = x + 1
+        else:
+            true_idx = x
+        emb = self.embeddings(true_idx)
         # rescale to [-1.0, 1.0]
         if self.add_position_embedding:
             emb = emb * self.scale

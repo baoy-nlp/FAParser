@@ -6,25 +6,24 @@ import pickle
 from collections import Counter
 from itertools import chain
 
+from .dictionary import Dictionary
+
 
 class VocabEntry(object):
-    PAD = 0
+    UNK = 0
     SOS = 1
     EOS = 2
-    UNK = 3
 
     def __init__(self):
         self.word2id = dict()
 
-        self.word2id['<pad>'] = 0
         self.word2id['<s>'] = 1
         self.word2id['</s>'] = 2
-        self.word2id['<unk>'] = 3
+        self.word2id['<unk>'] = 0
 
-        self.pad_id = 0
         self.sos_id = 1
         self.eos_id = 2
-        self.unk_id = 3
+        self.unk_id = 0
 
         self.id2word = {v: k for k, v in self.word2id.items()}
 
@@ -40,8 +39,15 @@ class VocabEntry(object):
     def __len__(self):
         return len(self.word2id)
 
+    def __sizeof__(self):
+        return len(self.word2id)
+
     def __repr__(self):
         return 'Vocabulary[size=%d]' % len(self)
+
+    @property
+    def size(self):
+        return len(self.word2id)
 
     def id2word(self, wid):
         return self.id2word[wid]
@@ -75,18 +81,22 @@ class VocabEntry(object):
 
         return vocab_entry
 
+    @staticmethod
+    def from_dict(dicts: Dictionary):
+        vocab_entry = VocabEntry()
+        vocab_entry.word2id = dicts.word2id
+        vocab_entry.id2word = {v: k for k, v in vocab_entry.word2id.items()}
+        return vocab_entry
+
 
 class Vocab(object):
-    PAD = 0
-    SOS = 1
-    EOS = 2
-    UNK = 3
-
     def __init__(self, **kwargs):
         self.entries = []
         for key, item in kwargs.items():
-            assert isinstance(item, VocabEntry)
-            self.__setattr__(key, item)
+            if isinstance(item, VocabEntry):
+                self.__setattr__(key, item)
+            if isinstance(item, Dictionary):
+                self.__setattr__(key, VocabEntry.from_dict(item))
 
             self.entries.append(key)
 
@@ -94,12 +104,15 @@ class Vocab(object):
         return 'Vocab(%s)' % (', '.join('%s %swords' % (entry, getattr(self, entry)) for entry in self.entries))
 
     @staticmethod
-    def from_bin_file(file_path):
+    def load(file_path):
         import os
         if os.path.getsize(file_path) > 0:
             return pickle.load(open(file_path, 'rb'))
         else:
             raise RuntimeWarning("Empty vocab")
+
+    def save(self, vocab_file):
+        pickle.dump(self, open(vocab_file, 'wb'))
 
 
 if __name__ == '__main__':

@@ -10,12 +10,12 @@ import sys
 
 import numpy as np
 
-from NJUParser.dataset.data_helpers import tree2list
 from NJUParser.dataset.data_set import Dataset
 from NJUParser.dataset.vocab import Vocab
 from NJUParser.dataset.vocab import VocabEntry
 from NJUParser.utils.config_utils import dict_to_args
 from NJUParser.utils.config_utils import yaml_load_dict
+from NJUParser.utils.distance_helper import tree2list
 from NJUParser.utils.ptb_utils import load_trees
 from NJUParser.utils.tools import write_docs
 from NJUParser.utils.tree_linearization import tree_to_s2b

@@ -1,12 +1,23 @@
-# -*- coding:utf-8 -*-
-# Filename: utility.py
-# Author：hankcs
-# Date: 2017-11-03 22:05
 from __future__ import print_function
 
 import errno
 import sys
 from os import makedirs
+
+def write_list_to_file(fname, docs):
+    with open(fname, 'w') as f:
+        for doc in docs:
+            f.write(str(doc))
+            f.write('\n')
+
+
+def load_file_to_list(fname):
+    res = []
+    with open(fname, 'r') as data_file:
+        for line in data_file:
+            line_res = line.strip("\n")
+            res.append(line_res)
+    return res
 
 
 def make_sure_path_exists(path):
@@ -15,12 +26,6 @@ def make_sure_path_exists(path):
     except OSError as exception:
         if exception.errno != errno.EEXIST:
             raise
-
-
-def eprint(*args, **kwargs):
-    print(args)
-    # print(*args, file=sys.stderr, **kwargs)
-
 
 def combine_files(fids, out, tb):
     print('%d files...' % len(fids))

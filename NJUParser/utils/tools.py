@@ -14,6 +14,11 @@ def load_docs(fname):
     return res
 
 
+def eprint(*args, **kwargs):
+    print(args)
+    # print(*args, file=sys.stderr, **kwargs)
+
+
 class PostProcess(object):
     def __init__(self, sos, eos, tgt_vocab, src_vocab, src_pad, tgt_pad):
         self.sos = sos

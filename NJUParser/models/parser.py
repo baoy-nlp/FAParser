@@ -2,7 +2,7 @@ import os
 
 import torch.nn as nn
 
-from NJUParser.utils.nn_utils import *
+from NJUParser.modules.nn_utils import *
 
 
 class Parser(nn.Module):
@@ -23,12 +23,15 @@ class Parser(nn.Module):
         self.args = args
         self.vocab = vocab
         self.module_name = name
-        print(self.module_name)
+        print("get a {}!".format(self.module_name))
 
     def forward(self, **kwargs):
+        """
+        used for training
+        """
         raise NotImplementedError
 
-    def score(self, example, return_enc_state=False):
+    def get_loss(self, example, return_enc_state=False):
         """evaluate the example log score"""
         raise NotImplementedError
 

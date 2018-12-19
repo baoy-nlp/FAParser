@@ -3,8 +3,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Variable
 
-from NJUParser.utils.ops import get_long_tensor
-from NJUParser.utils.ops import get_tensor
+from NJUParser.modules.tensor_ops import get_long_tensor
+from NJUParser.modules.tensor_ops import get_tensor
 
 
 def _inflate(tensor, times, dim):

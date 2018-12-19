@@ -1,7 +1,7 @@
 base_configs:
 # file configs:
   start_iter: 0
-  config_path: "/home/user_data/baoy/projects/seq2seq_parser/configs/ptb.yaml"
+  config_path: "/home/user_data/baoy/projects/seq2seq_parser/configs/seq2seq.yaml"
   train_file: "/home/user_data/baoy/projects/seq2seq_parser/data/s2b/train.bin"
   dev_file: "/home/user_data/baoy/projects/seq2seq_parser/data/s2b/dev.bin"
   test_file: "/home/user_data/baoy/projects/seq2seq_parser/data/s2b/test.bin"

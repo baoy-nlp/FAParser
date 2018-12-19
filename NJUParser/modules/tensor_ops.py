@@ -124,32 +124,3 @@ def batch_elements_select(input, index):
 
 def reflect(input, **kwargs):
     return input
-
-
-def zero_initialize(layers, batch_size, hidden_dims, rnn_cell='lstm'):
-    initial_val = [0.0] * (layers * batch_size * hidden_dims)
-    if rnn_cell == 'lstm':
-        return [
-            get_tensor(initial_val).view(layers, batch_size, hidden_dims),
-            get_tensor(initial_val).view(layers, batch_size, hidden_dims),
-        ]
-    else:
-        get_tensor(initial_val).view(layers, batch_size, hidden_dims)
-
-
-def rnn_initialize(encoder_hidden, bidirectional_encoder):
-    def _cat_directions(h):
-        """ If the encoder is bidirectional, do the following transformation.
-            (#directions * #layers, #batch, hidden_size) -> (#layers, #batch, #directions * hidden_size)
-        """
-        if bidirectional_encoder:
-            h = torch.cat([h[0:h.size(0):2], h[1:h.size(0):2]], 2)
-        return h
-
-    if encoder_hidden is None:
-        return None
-    if isinstance(encoder_hidden, tuple):
-        encoder_hidden = tuple([_cat_directions(h) for h in encoder_hidden])
-    else:
-        encoder_hidden = _cat_directions(encoder_hidden)
-    return encoder_hidden

@@ -4,8 +4,8 @@ Created by baoy-nlp, 2018-11-09
 Contains a series of modules that conduct the seq2seq parsing
 """
 from NJUParser.models.parser import Parser
+from NJUParser.modules.nn_utils import *
 from NJUParser.modules.seq2seq import BaseSeq2seq
-from NJUParser.utils.nn_utils import *
 
 
 class Seq2seqParser(Parser):
@@ -113,7 +113,7 @@ class Seq2seqParser(Parser):
             decode_max_time_step=dmts
         )
 
-    def score(self, examples, return_enc_state=False):
+    def get_loss(self, examples, return_enc_state=False):
         args = self.args
         if isinstance(examples, list):
             src_words = [e.src for e in examples]
@@ -128,7 +128,7 @@ class Seq2seqParser(Parser):
 
         encoder_outputs, encoder_hidden = self.encode(input_var=src_var, input_length=src_length)
         encoder_hidden = self.seq2seq.bridge(encoder_hidden)
-        scores = self.decoder.score(inputs=tgt_var, encoder_hidden=encoder_hidden, encoder_outputs=encoder_outputs)
+        scores = self.decoder.get_loss(inputs=tgt_var, encoder_hidden=encoder_hidden, encoder_outputs=encoder_outputs)
         enc_states = self.decoder.init_state(encoder_hidden)
 
         h = torch.cat([enc_states[i] for i in range(enc_states.size(0))], dim=-1)

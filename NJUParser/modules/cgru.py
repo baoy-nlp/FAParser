@@ -1,6 +1,6 @@
 import torch.nn as nn
 
-from NJUParser.utils import init as my_init
+from NJUParser.modules import init as my_init
 from NJUParser.modules.attention import BahdanauAttention
 
 

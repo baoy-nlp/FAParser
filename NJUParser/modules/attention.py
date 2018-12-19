@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
 
+from NJUParser.modules import init as my_init
 from NJUParser.modules.basic import BottleSoftmax
-from NJUParser.utils import init as my_init
 
 
 class DotProductionAttention(nn.Module):

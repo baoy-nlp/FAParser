@@ -5,8 +5,8 @@ import pickle as pickle
 import numpy as np
 from nltk.tree import Tree
 
-from NJUParser.dataset.data_helpers import tree2list, get_distance
-from NJUParser.utils import nn_utils
+from NJUParser.modules import nn_utils
+from NJUParser.utils.distance_helper import tree2list, get_distance
 
 
 def to_example(words, token_split=" "):

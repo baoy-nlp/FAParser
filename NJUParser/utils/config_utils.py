@@ -34,7 +34,7 @@ if __name__ == "__main__":
     Test dict_to_args
     """
 
-    x = yaml_load_dict("../configs/ptb.yaml")
+    x = yaml_load_dict("../configs/seq2seq.yaml")
 
     args = dict_to_args(x)
 
