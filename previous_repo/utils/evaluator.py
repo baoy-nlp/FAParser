@@ -5,7 +5,7 @@ import traceback
 
 from utils.global_names import GlobalNames
 
-from NJUParser.utils.tree_analysis import eval_s2b
+from FAParser.utils.tree_analysis import eval_s2b
 
 
 class TagJudge(object):

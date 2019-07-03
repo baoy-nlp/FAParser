@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-from NJUParser.dataset.vocab import VocabEntry
+from FAParser.dataset.vocab import VocabEntry
 
 PAD = VocabEntry.PAD
 

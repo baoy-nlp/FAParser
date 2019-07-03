@@ -5,9 +5,9 @@ import pickle
 
 from nltk.tree import Tree
 
-from NJUParser.dataset.dictionary import Dictionary
-from NJUParser.dataset.helper import *
-from NJUParser.dataset.vocab import Vocab
+from FAParser.dataset.dictionary import Dictionary
+from FAParser.dataset.helper import *
+from FAParser.dataset.vocab import Vocab
 
 
 def load_trees(path, strip_top=True):

@@ -1,7 +1,7 @@
 import torch.nn as nn
 
-from NJUParser.modules import init as my_init
-from NJUParser.modules.attention import BahdanauAttention
+from FAParser.modules import init as my_init
+from FAParser.modules.attention import BahdanauAttention
 
 
 class CGRUCell(nn.Module):

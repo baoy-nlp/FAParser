@@ -3,9 +3,9 @@ Created by baoy-nlp, 2018-11-09
 
 Contains a series of modules that conduct the seq2seq parsing
 """
-from NJUParser.models.parser import Parser
-from NJUParser.modules.nn_utils import *
-from NJUParser.modules.seq2seq import BaseSeq2seq
+from FAParser.models.parser import Parser
+from FAParser.modules.nn_utils import *
+from FAParser.modules.seq2seq import BaseSeq2seq
 
 
 class Seq2seqParser(Parser):

@@ -3,7 +3,7 @@ from __future__ import print_function
 import nltk
 from nltk.tree import Tree
 
-from NJUParser.dataset.dictionary import Dictionary
+from FAParser.dataset.dictionary import Dictionary
 
 
 def load_trees(path, strip_top=True, strip_spmrl_features=True):

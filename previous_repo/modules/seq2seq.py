@@ -1,7 +1,7 @@
 import torch.nn as nn
 
-from NJUParser.modules.rnn_decoder import RNNDecoder
-from NJUParser.modules.rnn_encoder import RNNEncoder
+from FAParser.modules.rnn_decoder import RNNDecoder
+from FAParser.modules.rnn_encoder import RNNEncoder
 from nn_modules.beam_decoder import TopKDecoder
 from nn_modules.bridge import Bridge
 from utils.nn_utils import *

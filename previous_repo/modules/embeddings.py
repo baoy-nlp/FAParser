@@ -7,8 +7,8 @@ import math
 import torch
 import torch.nn as nn
 
-from NJUParser.dataset.vocab import Vocab
-from NJUParser.modules import init as my_init
+from FAParser.dataset.vocab import Vocab
+from FAParser.modules import init as my_init
 
 
 class Embeddings(nn.Module):

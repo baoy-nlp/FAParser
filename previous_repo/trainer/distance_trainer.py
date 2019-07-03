@@ -14,16 +14,16 @@ import numpy
 import torch.nn as nn
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 
-from NJUParser.dataset.creater import TreeCreator
-from NJUParser.dataset.helper import FScore
-from NJUParser.dataset.helper import build_nltktree
-from NJUParser.dataset.helper import process_str_tree
-from NJUParser.dataset.loader import TreeLoader
-from NJUParser.loss.loss_modules import *
-from NJUParser.models import build_model
-from NJUParser.utils.config_utils import args_to_dict
-from NJUParser.utils.config_utils import dict_to_args
-from NJUParser.utils.config_utils import yaml_load_dict
+from FAParser.dataset.creater import TreeCreator
+from FAParser.dataset.helper import FScore
+from FAParser.dataset.helper import build_nltktree
+from FAParser.dataset.helper import process_str_tree
+from FAParser.dataset.loader import TreeLoader
+from FAParser.loss.loss_modules import *
+from FAParser.models import build_model
+from FAParser.utils.config_utils import args_to_dict
+from FAParser.utils.config_utils import dict_to_args
+from FAParser.utils.config_utils import yaml_load_dict
 
 
 def process_args():

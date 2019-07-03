@@ -1,6 +1,6 @@
 import torch.nn as nn
 
-from NJUParser.modules.baseRNN import BaseRNN
+from FAParser.modules.baseRNN import BaseRNN
 
 
 class RNNEncoder(BaseRNN):

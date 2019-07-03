@@ -3,11 +3,11 @@ import torch
 import torch.nn as nn
 from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence
 
-from NJUParser.dataset.helper import build_nltktree
-from NJUParser.dataset.helper import process_str_tree
-from NJUParser.models.parser import Parser
-from NJUParser.modules.embed_regularize import embedded_dropout
-from NJUParser.modules.weight_drop import WeightDrop
+from FAParser.dataset.helper import build_nltktree
+from FAParser.dataset.helper import process_str_tree
+from FAParser.models.parser import Parser
+from FAParser.modules.embed_regularize import embedded_dropout
+from FAParser.modules.weight_drop import WeightDrop
 
 
 def run_rnn(inputs, rnn, lengths):

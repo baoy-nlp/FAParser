@@ -7,32 +7,40 @@ Performance: Highest F1 Score/ UAS(LAS)
 Speed: Fastest
 - [Straight to the Tree: Constituency Parsing with Neural Syntactic Distance](https://aclweb.org/anthology/P18-1108)
 
-Our Naive Motivation
+This repo's target
 ---
-Span: Relation between the Constituency Tree and the Dependency Tree. 
+Faster and Accurate Syntactic Parsing both on Constituency and Dependency.
 
-Implementation Details
+Naive Motivation
 ---
-Self-Attentive Con Parser, Need:
-- Tree Structure Load/Conversion/Expr, Oracle Design
-- Self-Attentive Encoder
-- Max-Span Inference
+Conversion: Dependency Tree could be converted from constituency by utilizing head rule.\
+Span: where the head rule is used.  
+
+Implementation
+---
+Self-Attentive Con Parser, start from scratch with:
+- Phrase Structure Tree Load/Conversion/Expr, Oracle Design
 - Pretrain Model Loaded: ELMO
+- Multi-Head Self-Attentive Encoder
+- Max-Span Tree Inference
 - Training
 
-
-Biaffine Dep Parser, Need:
-- Dependency Tree Load/Conversion/Expr, Oracle Design
-- Bi-LSTM Encoder
-- MST Inference
+Biaffine Dep Parser, start from scratch with:
+- Dependency Relation Tree Load/Conversion/Expr, Oracle Design
 - Pretrain Word Embedding Loaded
+- Bi-LSTM Encoder
+- MST Inference with Attention Module
 - Training
 
+FAParser's new features:
+- Enhanced Pretrain Module of Word Representation
+- Enhanced MST Inference with Multi-Head Attention Module
+- Conditional modeling on interaction between information flows of phrase structure and dependency relation
 
-Similar to the design of [Fairseq](https://github.com/pytorch/fairseq), we organize our package as:
+Similar to the design of [fairseq](https://github.com/pytorch/fairseq), we organize our FAParser as:
 
 ```
-Dual Parser
+FAParser
 │   README.md
 │   train.py
 │   inference.py
@@ -73,7 +81,7 @@ Dual Parser
 └───tasks: for loss computing
 │   │   Constituency Parser
 │   │   Dependenecy Parser
-│   │   Dual Parser
+│   │   FAParser
 │   └ ...
 │
 └───utlis:
@@ -82,4 +90,5 @@ Dual Parser
 │   └ ...
 ```
 
-Criterion and Modules could be initialized with the fairseq's sub-modules. 
+criterion,modules,optim and data could be initialized with the fairseq's sub-modules. we just need build some 
+task-specific sub-packages. 

@@ -3,9 +3,9 @@ import pickle
 
 import nltk
 
-from NJUParser.dataset.dictionary import Dictionary
-from NJUParser.dataset.vocab import Vocab
-from NJUParser.modules.tensor_ops import get_long_tensor
+from FAParser.dataset.dictionary import Dictionary
+from FAParser.dataset.vocab import Vocab
+from FAParser.modules.tensor_ops import get_long_tensor
 
 
 class TreeLoader(object):

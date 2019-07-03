@@ -5,10 +5,10 @@ from utils.phrase_tree import FScore
 from utils.phrase_tree import PhraseTree
 from utils.tools import write_docs
 
-from NJUParser.utils.tree_linearization import s2b_to_s2t
-from NJUParser.utils.tree_linearization import s2t_check
-from NJUParser.utils.tree_linearization import s2t_fix
-from NJUParser.utils.tree_linearization import s2t_to_tree
+from FAParser.utils.tree_linearization import s2b_to_s2t
+from FAParser.utils.tree_linearization import s2t_check
+from FAParser.utils.tree_linearization import s2t_fix
+from FAParser.utils.tree_linearization import s2t_to_tree
 
 
 def eval_s2t(preds, golds):

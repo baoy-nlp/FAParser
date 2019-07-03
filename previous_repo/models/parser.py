@@ -2,7 +2,7 @@ import os
 
 import torch.nn as nn
 
-from NJUParser.modules.nn_utils import *
+from FAParser.modules.nn_utils import *
 
 
 class Parser(nn.Module):

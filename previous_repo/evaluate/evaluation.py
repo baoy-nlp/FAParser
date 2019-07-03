@@ -6,10 +6,10 @@ import traceback
 
 from nltk.translate import bleu_score
 
-from NJUParser.dataset import Dataset
-from NJUParser.modules.nn_utils import word2id, id2word
-from NJUParser.utils.global_names import GlobalNames
-from NJUParser.utils.tree_analysis import eval_s2b
+from FAParser.dataset import Dataset
+from FAParser.modules.nn_utils import word2id, id2word
+from FAParser.utils.global_names import GlobalNames
+from FAParser.utils.tree_analysis import eval_s2b
 
 
 class TagJudge(object):

@@ -2,13 +2,13 @@ import numpy
 import torch
 import torch.nn as nn
 
-from NJUParser.dataset.helper import build_nltktree
-from NJUParser.dataset.helper import process_str_tree
-from NJUParser.models.parser import Parser
-from NJUParser.modules.att_encoders import AttentionEncoder
-from NJUParser.modules.embeddings import Embeddings
-from NJUParser.modules.tensor_ops import get_long_tensor
-from NJUParser.modules.tensor_ops import sequence_mask
+from FAParser.dataset.helper import build_nltktree
+from FAParser.dataset.helper import process_str_tree
+from FAParser.models.parser import Parser
+from FAParser.modules.att_encoders import AttentionEncoder
+from FAParser.modules.embeddings import Embeddings
+from FAParser.modules.tensor_ops import get_long_tensor
+from FAParser.modules.tensor_ops import sequence_mask
 
 
 def encode(inputs: torch.Tensor, encoder: AttentionEncoder, lengths: numpy.array):

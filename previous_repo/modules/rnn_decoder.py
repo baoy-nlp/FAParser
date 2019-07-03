@@ -5,8 +5,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from NJUParser.modules.attention import DotProductionAttention as Attention
-from NJUParser.modules.baseRNN import BaseRNN
+from FAParser.modules.attention import DotProductionAttention as Attention
+from FAParser.modules.baseRNN import BaseRNN
 
 
 def reflection(x, dim):

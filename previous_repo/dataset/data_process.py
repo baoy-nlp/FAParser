@@ -10,15 +10,15 @@ import sys
 
 import numpy as np
 
-from NJUParser.dataset.data_set import Dataset
-from NJUParser.dataset.vocab import Vocab
-from NJUParser.dataset.vocab import VocabEntry
-from NJUParser.utils.config_utils import dict_to_args
-from NJUParser.utils.config_utils import yaml_load_dict
-from NJUParser.utils.distance_helper import tree2list
-from NJUParser.utils.ptb_utils import load_trees
-from NJUParser.utils.tools import write_docs
-from NJUParser.utils.tree_linearization import tree_to_s2b
+from FAParser.dataset.data_set import Dataset
+from FAParser.dataset.vocab import Vocab
+from FAParser.dataset.vocab import VocabEntry
+from FAParser.utils.config_utils import dict_to_args
+from FAParser.utils.config_utils import yaml_load_dict
+from FAParser.utils.distance_helper import tree2list
+from FAParser.utils.ptb_utils import load_trees
+from FAParser.utils.tools import write_docs
+from FAParser.utils.tree_linearization import tree_to_s2b
 
 
 def detail(data_set):
