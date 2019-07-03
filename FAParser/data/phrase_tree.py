@@ -20,6 +20,7 @@ class PhraseTree(object):
     puncs = [",", ".", ":", "``", "''", "PU"]  # (COLLINS.prm)
 
     def __init__(self, symbol=None, children=None, sentence=None, leaf=None):
+        super(PhraseTree, self).__init__()
         self.symbol = symbol  # label at top node
         self.children = children  # list of PhraseTree objects
         self.sentence = sentence
